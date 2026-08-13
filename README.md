@@ -1,31 +1,76 @@
-# Store Management System
+# Python Store Management System
 
-A simple command-line store management system built with Python. This project demonstrates object-oriented programming, JSON-based data storage, file handling, input validation, and basic inventory management.
+A simple command-line store management system built with Python.
 
-The project was developed as a learning project to practice Python classes, object-oriented programming, file handling, and working with JSON data.
+This project was created to practice Object-Oriented Programming (OOP), JSON data storage, file handling, input validation, and modular Python project structure.
 
 ## Features
 
 * Add new products
 * Display all products
 * Search products by name or ID
-* Sell products and update inventory
+* Sell products and update stock
 * Edit product information
 * Delete products
 * Calculate total inventory value
 * Save product data using JSON
 * Load saved products automatically when the program starts
-* Input validation for product price, quantity, and ID
+* Basic input validation
 * Confirmation before deleting products
 
-## Technologies Used
+## Technologies
 
 * Python 3
 * JSON
 * Object-Oriented Programming
 * File Handling
 
+## Requirements
+
 No external Python packages are required.
+
+The project uses only Python's standard library.
+
+Python 3.8 or newer is recommended.
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Ehsanzare2007/store-management-system.git
+```
+
+Move into the project directory:
+
+```bash
+cd store-management-system
+```
+
+## Running the Program
+
+Run the following command:
+
+```bash
+python main.py
+```
+
+The program will display the main menu:
+
+```text
+========== STORE MANAGER ==========
+1. Add Product
+2. Show Products
+3. Search Product
+4. Sell Product
+5. Edit Product
+6. Delete Product
+7. Inventory Value
+8. Exit
+===================================
+```
+
+Select an option by entering its corresponding number.
 
 ## Project Structure
 
@@ -50,17 +95,19 @@ store-management-system/
 └── README.md
 ```
 
-### File and Directory Description
+## File Description
 
-#### `main.py`
+### `main.py`
 
-The entry point of the application. It creates the menu and starts the program.
+The entry point of the application.
 
-#### `models/product.py`
+It imports the `Menu` class and starts the program.
+
+### `models/product.py`
 
 Contains the `Product` class.
 
-The class represents a product and stores information such as:
+The class represents a product and stores:
 
 * Product ID
 * Product name
@@ -68,181 +115,118 @@ The class represents a product and stores information such as:
 * Quantity
 * Category
 
-#### `managers/manager.py`
+It also provides functionality for creating products and converting product objects into dictionary data for JSON storage.
+
+### `managers/manager.py`
 
 Contains the `Manager` class.
 
-It handles the main product management operations:
+It handles the main store operations:
 
 * Adding products
-* Showing products
-* Searching
-* Selling
-* Editing
-* Deleting
+* Displaying products
+* Searching for products
+* Selling products
+* Editing products
+* Deleting products
 * Calculating inventory value
 
-#### `managers/storage_manager.py`
+### `managers/storage_manager.py`
 
 Contains the `StorageManager` class.
 
-It is responsible for:
+It is responsible for storing and loading product information using JSON.
 
-* Saving products to JSON
-* Loading products from JSON
-* Converting JSON data back into `Product` objects
+It converts product objects into JSON-compatible data when saving and recreates `Product` objects when loading data.
 
-#### `ui/menu.py`
+### `ui/menu.py`
 
-Contains the command-line interface of the application.
+Contains the `Menu` class.
 
-It displays the main menu and connects user choices to the appropriate manager functions.
+It provides the command-line interface and connects user selections to the appropriate manager operations.
 
-#### `products.example.json`
+### `products.example.json`
 
-An example of the JSON structure used to store product information.
+Contains example product data and demonstrates the structure used by the application for JSON storage.
 
-The actual `products.json` file is generated locally by the application and is excluded from Git using `.gitignore`.
-
-## Installation
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/Ehsanzare2007/store-management-system.git
-```
-
-### 2. Navigate to the project directory
-
-```bash
-cd store-management-system
-```
-
-### 3. Make sure Python is installed
-
-Check your Python version:
-
-```bash
-python --version
-```
-
-Python 3.x is recommended.
-
-No additional packages or dependencies are required.
-
-## Usage
-
-Run the application with:
-
-```bash
-python main.py
-```
-
-The program will display the following menu:
-
-```text
-========== STORE MANAGER ==========
-1. Add Product
-2. Show Products
-3. Search Product
-4. Sell Product
-5. Edit Product
-6. Delete Product
-7. Inventory Value
-8. Exit
-===================================
-```
-
-Choose an option by entering the corresponding number.
-
-### Example
-
-To add a product:
-
-```text
-Choose an option: 1
-
-Enter product name: Laptop
-Enter product id: 101
-Enter product price: 850
-Enter product quantity: 5
-Enter product category: Electronics
-```
-
-The product will be added to the inventory and saved to the local JSON file.
-
-To display the products:
-
-```text
-Choose an option: 2
-
-ID: 101 | Name: Laptop | Price: 850.0 | Qty: 5 | Category: Electronics
-```
+The actual `products.json` file is generated locally when the program runs and is excluded from Git using `.gitignore`.
 
 ## Data Storage
 
-The application uses a JSON file to store product information.
+The application uses JSON for persistent product storage.
 
-When products are added, edited, sold, or deleted, the data is saved to:
+Product information is stored locally in:
 
 ```text
 products.json
 ```
 
-When the application starts, it automatically loads the previously saved products.
+This file is automatically created and updated when products are added, edited, sold, or deleted.
 
-The `products.json` file is intentionally excluded from the Git repository because it contains local application data.
+When the application starts, previously saved products are loaded from the JSON file.
 
-## Requirements
+The `products.json` file is excluded from the repository because it contains local application data.
 
-* Python 3.x
-* No external libraries are required.
+## Example Product
 
-The `json` module is part of Python's standard library.
+A product is stored in JSON format similar to:
 
-## Current Limitations
+```json
+{
+    "category": "Electronics",
+    "name": "Laptop",
+    "id": 101,
+    "price": 899.99,
+    "quantity": 5
+}
+```
 
-This project is currently a command-line application and is intended primarily for learning and practice.
+## Inventory Value
 
-Some possible improvements include:
+The total inventory value is calculated by multiplying the price of each product by its available quantity.
 
-* Preventing duplicate product IDs
-* Improving search functionality
-* Adding low-stock warnings
-* Adding sales history
-* Adding product sorting and filtering
-* Adding automated tests
-* Improving error handling
-* Adding a graphical user interface
-* Migrating from JSON storage to a database for larger datasets
+```text
+Product Price × Product Quantity
+```
+
+For example:
+
+```text
+899.99 × 5 = 4499.95
+```
+
+The total value of all products is displayed through the `Inventory Value` option.
 
 ## Future Improvements
 
-Planned improvements may include:
+Possible future improvements include:
 
-1. Unique product ID validation
-2. Low-stock notifications
-3. Sales history and transaction records
-4. Product sorting and filtering
-5. Unit tests
-6. Improved command-line interface
-7. Database support
-8. Graphical user interface
+* Prevent duplicate product IDs
+* Make product searches case-insensitive
+* Search products by category
+* Add product sorting and filtering
+* Add low-stock warnings
+* Add sales history
+* Add revenue tracking
+* Improve input validation
+* Add automated tests
+* Add SQLite database support
+* Add a graphical user interface
 
 ## Learning Goals
 
-This project was created to practice and demonstrate:
+This project was created to practice:
 
 * Python classes and objects
-* Object-oriented programming
+* Object-Oriented Programming
 * Class methods
-* Encapsulation of responsibilities
+* Modular project organization
 * File handling
 * JSON serialization and deserialization
 * Input validation
 * Exception handling
-* Modular project structure
-* Basic Git and GitHub workflow
+* Basic inventory management
+* Git and GitHub workflow
 
 ## License
 
@@ -254,6 +238,4 @@ See the `LICENSE` file for more information.
 
 Ehsan Zare
 
-GitHub:
-
-https://github.com/Ehsanzare2007
+GitHub: https://github.com/Ehsanzare2007
