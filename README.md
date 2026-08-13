@@ -37,7 +37,7 @@ Python 3.8 or newer is recommended.
 Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/store-management-system.git
+git clone https://github.com/Ehsanzare2007/store-management-system.git
 ```
 
 Move into the project directory:
